@@ -1,0 +1,10 @@
+const express = require('express');
+const router = express.Router();
+const groups = require('../controllers/groupChat');
+router.post('/', groups.createGroup);
+router.post('/:groupId/member/:memberId', groups.addMemberToGroup);
+router.delete('/:groupId/member/:memberId', groups.removeMemberFromGroup);
+router.post('/:groupId/message', groups.addMessageToGroupChat);
+router.get('/chat-history/:userId', groups.getGroupChatHistory);
+router.get('/user-groups/:userId', groups.getUserGroups);
+module.exports = router;
